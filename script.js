@@ -57,7 +57,7 @@ function startSliding() {
         appendNewCard();
       }, 1000);
     }
-  }, 2000); // Adjust the interval here (in milliseconds)
+  }, 3000); // Adjust the interval here (in milliseconds)
 }
 
 startSliding();

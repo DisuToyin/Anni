@@ -118,6 +118,7 @@ body {
   body {
     margin-bottom: 10rem;
     flex-direction: column-reverse;
+    overflow-y: visible;
   }
 
   .Write-up {
