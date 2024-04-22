@@ -19,11 +19,12 @@ const urls = [
 
 // variables
 let cardCount = 0;
+let timer; // Variable to hold the timer for automatic sliding
 
 // functions
 function appendNewCard() {
   const card = new Card({
-    imageUrl: urls[cardCount % 5],
+    imageUrl: urls[cardCount % urls.length],
     onDismiss: appendNewCard,
     onLike: () => {
       like.style.animationPlayState = "running";
@@ -43,7 +44,35 @@ function appendNewCard() {
   });
 }
 
-// first 5 cards
-for (let i = 0; i < 5; i++) {
+function startSliding() {
+  timer = setInterval(() => {
+    // Simulate swipe gesture to dismiss current card and reveal the next one
+    const currentCard = swiper.querySelector(".card:not(.dismissing)");
+    if (currentCard) {
+      currentCard.style.transition = "transform 1s";
+      currentCard.style.transform = `translate(${window.innerWidth}px, 0) rotate(90deg)`;
+      currentCard.classList.add("dismissing");
+      setTimeout(() => {
+        currentCard.remove();
+        appendNewCard();
+      }, 1000);
+    }
+  }, 2000); // Adjust the interval here (in milliseconds)
+}
+
+startSliding();
+
+// Stop sliding when mouse enters the swiper
+swiper.addEventListener("mouseenter", () => {
+  clearInterval(timer);
+});
+
+// Resume sliding when mouse leaves the swiper
+swiper.addEventListener("mouseleave", () => {
+  startSliding();
+});
+
+// Initialize first 10 cards
+for (let i = 0; i < 10; i++) {
   appendNewCard();
 }
