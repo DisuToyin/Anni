@@ -10,6 +10,11 @@ const urls = [
   "./images/MD3.jpeg",
   "./images/MD2.jpeg",
   "./images/MD1.jpeg",
+  "./images/MD6.jpeg",
+  "./images/MD7.jpeg",
+  "./images/MD8.jpeg",
+  "./images/MD9.jpeg",
+  "./images/MD10.jpeg",
 ];
 
 // variables
